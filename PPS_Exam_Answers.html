@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PPS Exam Study Guide – Unit 1 & 2</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d0f14;
+    --surface: #13161d;
+    --card: #1a1e28;
+    --border: #252a38;
+    --accent: #f0a500;
+    --accent2: #4fc3f7;
+    --accent3: #81c995;
+    --text: #e8eaf0;
+    --muted: #8a92a6;
+    --mark: #f0a50022;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Source Serif 4', serif;
+    font-size: 16px;
+    line-height: 1.75;
+  }
+
+  /* HEADER */
+  .hero {
+    background: linear-gradient(135deg, #0d0f14 0%, #1a1230 50%, #0d1a20 100%);
+    border-bottom: 2px solid var(--accent);
+    padding: 48px 32px 36px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; left: 50%;
+    transform: translateX(-50%);
+    width: 600px; height: 300px;
+    background: radial-gradient(ellipse, #f0a50018 0%, transparent 70%);
+  }
+  .hero-tag {
+    display: inline-block;
+    background: var(--accent);
+    color: #000;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    padding: 4px 14px;
+    border-radius: 2px;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 5vw, 52px);
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.1;
+    margin-bottom: 10px;
+  }
+  .hero h1 span { color: var(--accent); }
+  .hero p {
+    color: var(--muted);
+    font-size: 15px;
+    font-style: italic;
+  }
+
+  /* TOC */
+  .toc {
+    max-width: 860px;
+    margin: 36px auto;
+    padding: 0 20px;
+  }
+  .toc-box {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
+    border-radius: 8px;
+    padding: 24px 28px;
+  }
+  .toc-box h3 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--accent);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .toc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 6px 20px;
+  }
+  .toc-grid a {
+    color: var(--accent2);
+    text-decoration: none;
+    font-size: 14px;
+    font-family: 'Source Serif 4', serif;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 3px 0;
+    transition: color 0.2s;
+  }
+  .toc-grid a:hover { color: var(--accent); }
+  .toc-grid a::before {
+    content: '→';
+    color: var(--accent);
+    font-size: 12px;
+    flex-shrink: 0;
+  }
+
+  /* MAIN */
+  .container { max-width: 860px; margin: 0 auto; padding: 0 20px 60px; }
+
+  /* UNIT HEADER */
+  .unit-label {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 48px 0 24px;
+  }
+  .unit-label .pill {
+    background: var(--accent);
+    color: #000;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    padding: 6px 14px;
+    border-radius: 4px;
+    white-space: nowrap;
+    text-transform: uppercase;
+  }
+  .unit-label .line { flex: 1; height: 1px; background: var(--border); }
+  .unit-label h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: var(--accent);
+    white-space: nowrap;
+  }
+
+  /* QUESTION CARD */
+  .q-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin-bottom: 28px;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+  .q-card:hover { border-color: #3a4055; }
+
+  .q-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 18px 24px;
+    background: #15192300;
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    user-select: none;
+  }
+  .q-header:hover { background: #ffffff05; }
+
+  .q-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    font-weight: 600;
+    letter-spacing: 1px;
+    padding: 3px 10px;
+    border: 1px solid var(--accent);
+    border-radius: 4px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .q-title {
+    font-family: 'Source Serif 4', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    flex: 1;
+    line-height: 1.4;
+  }
+
+  .marks-badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    background: var(--accent2);
+    color: #000;
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-weight: 600;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .marks-badge.six { background: var(--accent3); }
+
+  .toggle-icon {
+    color: var(--muted);
+    font-size: 18px;
+    flex-shrink: 0;
+    transition: transform 0.3s;
+  }
+  .q-card.open .toggle-icon { transform: rotate(180deg); }
+
+  .q-body {
+    display: none;
+    padding: 24px 28px;
+    border-top: 1px solid var(--border);
+    animation: fadeIn 0.2s ease;
+  }
+  .q-card.open .q-body { display: block; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ANSWER STYLES */
+  .ans-intro {
+    color: var(--muted);
+    font-size: 14px;
+    font-style: italic;
+    margin-bottom: 16px;
+    padding: 10px 14px;
+    background: var(--mark);
+    border-left: 3px solid var(--accent);
+    border-radius: 4px;
+  }
+
+  h3.section-head {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    color: var(--accent2);
+    margin: 20px 0 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px dashed var(--border);
+  }
+
+  p { margin-bottom: 12px; color: var(--text); }
+
+  ul, ol {
+    margin: 8px 0 14px 0;
+    padding-left: 22px;
+  }
+  ul li, ol li {
+    margin-bottom: 6px;
+    color: var(--text);
+  }
+  ul li::marker { color: var(--accent); }
+  ol li::marker { color: var(--accent); font-family: 'JetBrains Mono', monospace; font-size: 13px; }
+
+  strong { color: #fff; font-weight: 600; }
+  em { color: var(--accent); font-style: normal; }
+
+  /* TABLE */
+  .tbl-wrap { overflow-x: auto; margin: 14px 0; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  th {
+    background: #1e2535;
+    color: var(--accent);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    padding: 10px 14px;
+    text-align: left;
+    border: 1px solid var(--border);
+  }
+  td {
+    padding: 9px 14px;
+    border: 1px solid var(--border);
+    color: var(--text);
+    vertical-align: top;
+  }
+  tr:nth-child(even) td { background: #ffffff04; }
+
+  /* CODE BLOCK */
+  pre {
+    background: #0a0c11;
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent3);
+    border-radius: 6px;
+    padding: 16px 18px;
+    overflow-x: auto;
+    margin: 14px 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: #c9d1d9;
+  }
+  .kw { color: #ff7b72; }
+  .ty { color: #79c0ff; }
+  .cm { color: #6a737d; font-style: italic; }
+  .str { color: #a5d6ff; }
+  .fn { color: #d2a8ff; }
+  .num { color: #f2cc60; }
+
+  /* DIAGRAM */
+  .diagram {
+    background: #0a0c11;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 20px;
+    margin: 14px 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--accent2);
+    white-space: pre;
+    overflow-x: auto;
+    line-height: 1.5;
+  }
+
+  /* TIP BOX */
+  .tip {
+    background: #0f2318;
+    border: 1px solid #2d5a3d;
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin: 14px 0;
+    font-size: 14px;
+    color: var(--accent3);
+  }
+  .tip::before { content: '💡 Exam Tip: '; font-weight: 700; }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 32px;
+    color: var(--muted);
+    font-size: 13px;
+    border-top: 1px solid var(--border);
+    font-style: italic;
+  }
+
+  /* OPEN ALL BTN */
+  .controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .btn {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    padding: 8px 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 1px solid var(--border);
+    background: var(--card);
+    color: var(--text);
+    transition: all 0.2s;
+  }
+  .btn:hover { border-color: var(--accent); color: var(--accent); }
+  .btn.primary { background: var(--accent); color: #000; border-color: var(--accent); }
+  .btn.primary:hover { background: #ffb820; }
+
+  .highlight-row td:first-child { border-left: 3px solid var(--accent); }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-tag">Mid-Sem Exam Prep · 2025–26</div>
+  <h1>Programming for <span>Problem Solving</span></h1>
+  <p>Unit I & II · Complete Descriptive Answers · Government College of Engineering, Kolhapur</p>
+</div>
+
+<div class="toc">
+  <div class="toc-box">
+    <h3>📋 Quick Navigation</h3>
+    <div class="toc-grid">
+      <a href="#u1">UNIT I – Computer Fundamentals</a>
+      <a href="#q1">Basic Components of Computer</a>
+      <a href="#q2">Generations of Computers</a>
+      <a href="#q3">Classification of Computers</a>
+      <a href="#q4">Input & Output Devices</a>
+      <a href="#q5">Memory Types</a>
+      <a href="#q6">Types of Software</a>
+      <a href="#q7">Operating System</a>
+      <a href="#q8">Networking Concepts</a>
+      <a href="#q9">Program Development Process</a>
+      <a href="#u2">UNIT II – Types, Operators & Expressions</a>
+      <a href="#q10">C Tokens (⭐ IMP from prev. paper)</a>
+      <a href="#q11">Data Types in C</a>
+      <a href="#q12">Arithmetic Operators</a>
+      <a href="#q13">Relational & Logical Operators (⭐ IMP)</a>
+      <a href="#q14">Bitwise Operators</a>
+      <a href="#q15">Conditional Operator</a>
+      <a href="#q16">Operator Precedence</a>
+      <a href="#q17">Type Conversion</a>
+      <a href="#q18">Assignment Operators</a>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="controls">
+    <button class="btn primary" onclick="openAll()">▼ Expand All Answers</button>
+    <button class="btn" onclick="closeAll()">▲ Collapse All</button>
+  </div>
+
+  <!-- ============================================================ -->
+  <!--  UNIT I -->
+  <!-- ============================================================ -->
+  <div class="unit-label" id="u1">
+    <div class="pill">Unit I</div>
+    <div class="line"></div>
+    <h2>Fundamentals of Computer & Computing Concepts</h2>
+    <div class="line"></div>
+  </div>
+
+  <!-- Q1 -->
+  <div class="q-card" id="q1">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-num">Q.1</span>
+      <span class="q-title">Explain the basic components of a computer system with a neat diagram.</span>
+      <span class="marks-badge">4 / 6 Marks</span>
+      <span class="toggle-icon">▼</span>
+    </div>
+    <div class="q-body">
+      <div class="ans-intro">This is a core question — draw the block diagram and explain each component clearly.</div>
+
+      <p>A <strong>Computer System</strong> is an electronic device that accepts data as input, processes it, and produces meaningful results as output. It consists of the following major components:</p>
+
+      <h3 class="section-head">Block Diagram</h3>
+      <div class="diagram">
+  ┌─────────────┐     ┌──────────────────────────────────┐     ┌──────────────┐
+  │  INPUT      │────▶│         CENTRAL PROCESSING UNIT  │────▶│   OUTPUT     │
+  │  DEVICES    │     │  ┌─────────────┐ ┌────────────┐  │     │  DEVICES     │
+  │  Keyboard   │     │  │    ALU      │ │  Control   │  │     │  Monitor     │
+  │  Mouse      │     │  │(Arithmetic  │ │  Unit (CU) │  │     │  Printer     │
+  │  Scanner    │     │  │Logic Unit)  │ │            │  │     │  Speaker     │
+  └─────────────┘     │  └─────────────┘ └────────────┘  │     └──────────────┘
+                      └──────────────┬───────────────────┘
+                                     │
+                              ┌──────▼──────┐
+                              │   MEMORY    │
+                              │  (Primary)  │
+                              │  RAM / ROM  │
+                              └─────────────┘
+                                     │
+                       ┌─────────────▼─────────────┐
+                       │  SECONDARY STORAGE         │
+                       │  Hard Disk, CD, Pen Drive  │
+                       └────────────────────────────┘</div>
+
+      <h3 class="section-head">1. Input Unit</h3>
+      <p>Accepts data and instructions from the user and converts them into binary form understood by the computer. Examples: Keyboard, Mouse, Scanner, Microphone.</p>
+
+      <h3 class="section-head">2. Central Processing Unit (CPU)</h3>
+      <p>It is the <strong>brain of the computer</strong>. It has two sub-units:</p>
+      <ul>
+        <li><strong>ALU (Arithmetic Logic Unit):</strong> Performs all arithmetic operations (add, subtract, multiply, divide) and logical operations (AND, OR, NOT, comparisons).</li>
+        <li><strong>Control Unit (CU):</strong> Directs and coordinates the activities of all other units. It fetches instructions from memory, decodes them, and controls their execution.</li>
+      </ul>
+
+      <h3 class="section-head">3. Memory Unit</h3>
+      <ul>
+        <li><strong>Primary Memory (RAM/ROM):</strong> Directly accessible by CPU. RAM is volatile (data lost when power off). ROM is non-volatile (stores BIOS).</li>
+        <li><strong>Secondary Memory:</strong> Hard Disk, CD-ROM, Pen Drive — used for permanent storage.</li>
+      </ul>
+
+      <h3 class="section-head">4. Output Unit</h3>
+      <p>Displays or presents processed results to the user. Examples: Monitor, Printer, Speaker, Projector.</p>
+
+      <div class="tip">Always draw the block diagram. Label Input → CPU (ALU + CU) → Output with Memory connected to CPU. This diagram alone fetches 2 marks.</div>
+    </div>
+  </div>
+
+  <!-- Q2 -->
+  <div class="q-card" id="q2">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-num">Q.2</span>
+      <span class="q-title">Describe the generation of computers in detail.</span>
+      <span class="marks-badge six">6 Marks</span>
+      <span class="toggle-icon">▼</span>
+    </div>
+    <div class="q-body">
+      <p>Computers have evolved through five generations based on the technology used in their construction:</p>
+
+      <div class="tbl-wrap">
+        <table>
+          <tr>
+            <th>Generation</th>
+            <th>Period</th>
+            <th>Technology</th>
+            <th>Features</th>
+            <th>Example</th>
+          </tr>
+          <tr class="highlight-row">
+            <td><strong>1st</strong></td>
+            <td>1940–1956</td>
+            <td>Vacuum Tubes</td>
+            <td>Very large, slow, expensive; generated heat; used machine language</td>
+            <td>ENIAC, UNIVAC</td>
+          </tr>
+          <tr>
+            <td><strong>2nd</strong></td>
+            <td>1956–1963</td>
+            <td>Transistors</td>
+            <td>Smaller, faster, cheaper than 1st gen; used Assembly language</td>
+            <td>IBM 7094</td>
+          </tr>
+          <tr class="highlight-row">
+            <td><strong>3rd</strong></td>
+            <td>1964–1971</td>
+            <td>Integrated Circuits (IC)</td>
+            <td>Multiple transistors on a chip; introduced High-Level Languages (FORTRAN, COBOL)</td>
+            <td>IBM 360</td>
+          </tr>
+          <tr>
+            <td><strong>4th</strong></td>
+            <td>1971–Present</td>
+            <td>Microprocessors (VLSI)</td>
+            <td>Thousands of ICs on one chip; personal computers; GUI; C, C++ used</td>
+            <td>Intel 4004, IBM PC</td>
+          </tr>
+          <tr class="highlight-row">
+            <td><strong>5th</strong></td>
+            <td>Present–Future</td>
+            <td>AI, ULSI, Parallel Processing</td>
+            <td>Artificial Intelligence, voice recognition, robots; natural language processing</td>
+            <td>IBM Watson</td>
+          </tr>
+        </table>
+      </div>
+
+      <h3 class="section-head">Key Points to Remember</h3>
+      <ul>
+        <li>Each generation reduced size and cost while increasing speed and capacity.</li>
+        <li>Language evolved: Machine → Assembly → High Level → GUI-based → AI/Natural Language.</li>
+        <li>4th generation introduced the concept of Personal Computers (PCs).</li>
+      </ul>
+
+      <div class="tip">Write 2-3 lines for each generation with the technology name bolded. The table format will fetch maximum marks quickly.</div>
+    </div>
+  </div>
+
+  <!-- Q3 -->
+  <div class="q-card" id="q3">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-num">Q.3</span>
+      <span class="q-title">Explain the classification of computers based on size and purpose.</span>
+      <span class="marks-badge">4 / 6 Marks</span>
+      <span class="toggle-icon">▼</span>
+    </div>
+    <div class="q-body">
+      <h3 class="section-head">Classification Based on Size</h3>
+      <ul>
+        <li><strong>Microcomputers (Personal Computers):</strong> Smallest and cheapest. Used by single user. E.g., Desktop, Laptop, Tablet, Smartphone.</li>
+        <li><strong>Minicomputers:</strong> Medium-sized, used by multiple users simultaneously. E.g., PDP-11.</li>
+        <li><strong>Mainframe Computers:</strong> Large, powerful, used by large organizations (banks, airlines) for bulk processing. E.g., IBM Z-series.</li>
+        <li><strong>Supercomputers:</strong> Fastest and most powerful. Used for scientific research, weather forecasting, nuclear simulation. E.g., PARAM (India), Cray.</li>
+        <li><strong>Embedded Computers:</strong> Built into devices for specific tasks. E.g., washing machine controller, ATM.</li>
+      </ul>
+
+      <h3 class="section-head">Classification Based on Purpose</h3>
+      <ul>
+        <li><strong>General-Purpose Computers:</strong> Can perform a variety of tasks — word processing, gaming, internet browsing. E.g., Personal computers.</li>
+        <li><strong>Special-Purpose Computers:</strong> Designed for one specific task. E.g., ATM machine, Traffic signal controller, Digital camera.</li>
+      </ul>
+
+      <h3 class="section-head">Classification Based on Functionality (Bonus)</h3>
+      <ul>
+        <li><strong>Analog:</strong> Works on continuous signals. E.g., Thermometer, Speedometer.</li>
+        <li><strong>Digital:</strong> Works on discrete binary data (0 and 1). E.g., Calculators, PCs.</li>
+        <li><strong>Hybrid:</strong> Combination of analog and digital. E.g., Hospital monitors.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Q4 -->
+  <div class="q-card" id="q4">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-num">Q.4</span>
+      <span class="q-title">Explain different types of input and output devices with examples.</span>
+      <span class="marks-badge">4 Marks</span>
+      <span class="toggle-icon">▼</span>
+    </div>
+    <div class="q-body">
+      <h3 class="section-head">Input Devices</h3>
+      <p>Input devices allow users to enter data and instructions into the computer.</p>
+      <div class="tbl-wrap">
+        <table>
+          <tr><th>Device</th><th>Function</th></tr>
+          <tr><td><strong>Keyboard</strong></td><td>Entering text, numbers, commands</td></tr>
+          <tr><td><strong>Mouse</strong></td><td>Pointing, clicking, selecting on GUI</td></tr>
+          <tr><td><strong>Scanner</strong></td><td>Converting physical documents to digital images</td></tr>
+          <tr><td><strong>Microphone</strong></td><td>Capturing audio input</td></tr>
+          <tr><td><strong>Joystick</strong></td><td>Used in gaming and aircraft simulators</td></tr>
+          <tr><td><strong>Barcode Reader</strong></td><td>Reading barcodes on products</td></tr>
+        </table>
+      </div>
+
+      <h3 class="section-head">Output Devices</h3>
+      <p>Output devices present the processed results to the user.</p>
+      <div class="tbl-wrap">
+        <table>
+          <tr><th>Device</th><th>Function</th></tr>
+          <tr><td><strong>Monitor</strong></td><td>Displays text and graphics (visual output)</td></tr>
+          <tr><td><strong>Printer</strong></td><td>Produces hard copy (paper) output</td></tr>
+          <tr><td><strong>Speaker</strong></td><td>Produces audio output</td></tr>
+          <tr><td><strong>Projector</strong></td><td>Projects display on a large screen</td></tr>
+          <tr><td><strong>Plotter</strong></td><td>Draws accurate diagrams and graphs</td></tr>
+        </table>
+      </div>
+      <div class="tip">Some devices like Touch Screen are both input and output — mention this for extra marks!</div>
+    </div>
+  </div>
+
+  <!-- Q5 -->
+  <div class="q-card" id="q5">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-num">Q.5</span>
+      <span class="q-title">Discuss memory organization and types of memory in detail.</span>
+      <span class="marks-badge">4 / 6 Marks</span>
+      <span class="toggle-icon">▼</span>
+    </div>
+    <div class="q-body">
+      <div class="diagram">
+                    MEMORY HIERARCHY
+                  ┌─────────────────┐
+                  │   Registers     │  ← Fastest, Smallest (inside CPU)
+                  ├─────────────────┤
+                  │   Cache Memory  │  ← L1, L2, L3 Cache
+                  ├─────────────────┤
+                  │  Primary Memory │  ← RAM, ROM
+                  │   (Main Memory) │
+                  ├─────────────────┤
+                  │ Secondary Memory│  ← HDD, SSD, CD, Pen Drive
+                  └─────────────────┘
+                         ↑ Slower, Larger, Cheaper</div>
+
+      <h3 class="section-head">Primary Memory (Main Memory)</h3>
+      <ul>
+        <li><strong>RAM (Random Access Memory):</strong> Volatile memory — data is lost when power is off. Stores currently running programs and data. Types: DRAM, SRAM.</li>
+        <li><strong>ROM (Read Only Memory):</strong> Non-volatile — data is permanent. Stores BIOS/firmware. Types: PROM, EPROM, EEPROM.</li>
+        <li><strong>Cache Memory:</strong> Very fast memory between CPU and RAM. Stores frequently used data to speed up processing.</li>
+      </ul>
+
+      <h3 class="section-head">Secondary Memory (Auxiliary Storage)</h3>
+      <p>Permanent, non-volatile storage. Data is retained even when power is off.</p>
+      <ul>
+        <li><strong>Magnetic:</strong> Hard Disk Drive (HDD), Floppy Disk</li>
+        <li><strong>Optical:</strong> CD, DVD, Blu-Ray</li>
+        <li><strong>Flash:</strong> SSD, Pen Drive, Memory Card</li>
+      </ul>
+
+      <div class="tbl-wrap">
+        <table>
+          <tr><th>Feature</th><th>RAM</th><th>ROM</th><th>Secondary</th></tr>
+          <tr><td>Volatile</td><td>Yes</td><td>No</td><td>No</td></tr>
+          <tr><td>Speed</td><td>Fast</td><td>Fast</td><td>Slow</td></tr>
+          <tr><td>Capacity</td><td>Medium</td><td>Small</td><td>Very Large</td></tr>
+          <tr><td>Modifiable</td><td>Yes</td><td>No</td><td>Yes</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q6 -->
+  <div class="q-card" id="q6">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-num">Q.6</span>
+      <span class="q-title">Explain the types of computer software with suitable examples.</span>
+      <span class="marks-badge">4 Marks</span>
+      <span class="toggle-icon">▼</span>
+    </div>
+    <div class="q-body">
+      <p><strong>Software</strong> is a collection of programs and instructions that tell the computer what to do. It is classified into two main types:</p>
+
+      <h3 class="section-head">1. System Software</h3>
+      <p>System software manages the hardware and provides a platform for running application software. It acts as an interface between hardware and user.</p>
+      <ul>
+        <li><strong>Operating System:</strong> Controls all hardware resources. E.g., Windows, Linux, Android, macOS.</li>
+        <li><strong>Compiler/Interpreter:</strong> Translates high-level language code to machine code. E.g., GCC for C.</li>
+        <li><strong>Assembler:</strong> Converts assembly language to machine language.</li>
+        <li><strong>Device Drivers:</strong> Allow OS to communicate with hardware. E.g., Printer driver.</li>
+        <li><strong>Utilities:</strong> Perform specific maintenance tasks. E.g., Antivirus, Disk Cleanup.</li>
+      </ul>
+
+      <h3 class="section-head">2. Application Software</h3>
+      <p>Designed to perform specific tasks for the user.</p>
+      <ul>
+        <li><strong>General Purpose:</strong> MS Word, MS Excel, MS PowerPoint, Web Browsers.</li>
+        <li><strong>Specific Purpose:</strong> Tally (accounting), AutoCAD (design), Adobe Photoshop (editing).</li>
+        <li><strong>Mobile Apps:</strong> WhatsApp, Google Maps, YouTube.</li>
+      </ul>
+
+      <h3 class="section-head">3. Programming Software (Tools)</h3>
+      <p>Tools that help programmers write code. E.g., IDE (Eclipse, VS Code, Dev-C++), Debuggers, Code Editors.</p>
+    </div>
+  </div>
+
+  <!-- Q7 -->
+  <div class="q-card" id="q7">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-num">Q.7</span>
+      <span class="q-title">Describe the overview of an Operating System and its functions.</span>
+      <span class="marks-badge">4 Marks</span>
+      <span class="toggle-icon">▼</span>
+    </div>
+    <div class="q-body">
+      <p>An <strong>Operating System (OS)</strong> is the most important system software. It acts as an <em>interface between the user and the computer hardware</em>. Without an OS, the computer cannot be used.</p>
+      <p><strong>Examples:</strong> Windows 11, Linux, macOS, Android, iOS.</p>
+
+      <h3 class="section-head">Functions of an Operating System</h3>
+      <ul>
+        <li><strong>Process Management:</strong> Controls creation, scheduling, and termination of processes/programs.</li>
+        <li><strong>Memory Management:</strong> Allocates RAM to programs; ensures no two programs use the same memory space.</li>
+        <li><strong>File Management:</strong> Manages files and folders — creation, deletion, reading, writing, and organization.</li>
+        <li><strong>Device Management:</strong> Controls input/output devices via device drivers.</li>
+        <li><strong>Security Management:</strong> Provides login, passwords, access control to protect data.</li>
+        <li><strong>User Interface:</strong> Provides either GUI (Graphical User Interface) like Windows, or CLI (Command Line Interface) like Linux terminal.</li>
+        <li><strong>Error Detection:</strong> Detects and reports hardware/software errors.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Q8 -->
+  <div class="q-card" id="q8">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-num">Q.8</span>
+      <span class="q-title">Explain the concept of Networking and types of networks.</span>
+      <span class="marks-badge">4 Marks</span>
+      <span class="toggle-icon">▼</span>
+    </div>
+    <div class="q-body">
+      <p>A <strong>Computer Network</strong> is a system where two or more computers are connected together to share resources (data, printers, internet) and communicate with each other.</p>
+
+      <h3 class="section-head">Types of Networks</h3>
+      <ul>
+        <li><strong>LAN (Local Area Network):</strong> Connects computers within a small area like a building, office, or school. Fast and cheap. E.g., College lab network.</li>
+        <li><strong>MAN (Metropolitan Area Network):</strong> Covers a city or large campus. Larger than LAN. E.g., Cable TV networks in a city.</li>
+        <li><strong>WAN (Wide Area Network):</strong> Spans a large geographical area — countries or continents. E.g., The Internet.</li>
+        <li><strong>PAN (Personal Area Network):</strong> Very small, personal network. E.g., Bluetooth between phone and earphone.</li>
+      </ul>
+
+      <h3 class="section-head">Benefits of Networking</h3>
+      <ul>
+        <li>Resource sharing (printers, scanners)</li>
+        <li>Data sharing and communication (email, chat)</li>
+        <li>Centralized data storage and backup</li>
+        <li>Cost reduction</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Q9 -->
+  <div class="q-card" id="q9">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-num">Q.9</span>
+      <span class="q-title">Describe the process of program development (Editing, Compiling, Debugging).</span>
+      <span class="marks-badge">4 / 6 Marks</span>
+      <span class="toggle-icon">▼</span>
+    </div>
+    <div class="q-body">
+      <p>Program development is a step-by-step process to create a working software program. The steps are:</p>
+
+      <div class="diagram">  PROBLEM
+      ↓
+  ANALYSIS (Understand the problem)
+      ↓
+  ALGORITHM (Step-by-step solution in plain English)
+      ↓
+  FLOWCHART (Pictorial representation of algorithm)
+      ↓
+  CODING / EDITING (Write code in IDE like Eclipse or Dev-C++)
+      ↓
+  COMPILATION (Compiler converts code → machine code)
+      ↓
+  ERROR CHECKING (Fix Syntax/Semantic/Runtime errors)
+      ↓
+  EXECUTION (Run the program)
+      ↓
+  TESTING & DEBUGGING (Test with different inputs, fix bugs)
+      ↓
+  DOCUMENTATION (Write user manual / comments)</div>
+
+      <h3 class="section-head">Types of Errors</h3>
+      <ul>
+        <li><strong>Syntax Error:</strong> Wrong grammar of programming language. Detected by compiler. E.g., missing semicolon in C.</li>
+        <li><strong>Semantic Error:</strong> Code is grammatically correct but logically wrong. E.g., using = instead of == for comparison.</li>
+        <li><strong>Runtime Error:</strong> Error that occurs during execution. E.g., division by zero.</li>
+        <li><strong>Logical Error:</strong> Program runs but gives wrong output. E.g., using + instead of * in a formula.</li>
+      </ul>
+
+      <h3 class="section-head">IDE (Integrated Development Environment)</h3>
+      <p>An IDE provides a text editor, compiler, debugger, and other tools in one application. Examples: <strong>Eclipse</strong> (Java, C), <strong>Dev-C++</strong>, <strong>VS Code</strong>, <strong>Code::Blocks</strong>.</p>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!--  UNIT II -->
+  <!-- ============================================================ -->
+  <div class="unit-label" id="u2">
+    <div class="pill">Unit II</div>
+    <div class="line"></div>
+    <h2>Types, Operators and Expressions</h2>
+    <div class="line"></div>
+  </div>
+
+  <!-- Q10 – C TOKENS ⭐ IMP -->
+  <div class="q-card" id="q10">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-num">Q.10 ⭐</span>
+      <span class="q-title">Explain C Tokens in detail with examples. (ASKED IN PREVIOUS PAPER – 4 Marks)</span>
+      <span class="marks-badge">4 Marks</span>
+      <span class="toggle-icon">▼</span>
+    </div>
+    <div class="q-body">
+      <div class="ans-intro">This question was asked in the previous Mid-Sem paper for 4 marks. Write all 6 types of tokens with 1–2 line explanation and example.</div>
+
+      <p>A <strong>Token</strong> is the smallest individual unit in a C program. When a C program is compiled, the compiler reads it character by character and groups characters into tokens. There are <em>6 types of tokens</em> in C:</p>
+
+      <h3 class="section-head">1. Keywords</h3>
+      <p>Reserved words with predefined meaning in C. Cannot be used as variable names.</p>
+      <pre><span class="kw">int</span>  <span class="kw">float</span>  <span class="kw">char</span>  <span class="kw">if</span>  <span class="kw">else</span>  <span class="kw">while</span>  <span class="kw">for</span>  <span class="kw">return</span>  <span class="kw">void</span></pre>
+
+      <h3 class="section-head">2. Identifiers</h3>
+      <p>User-defined names given to variables, functions, or arrays.</p>
+      <pre><span class="ty">int</span> <span class="fn">sum</span>;      <span class="cm">// 'sum' is an identifier</span>
+<span class="ty">float</span> <span class="fn">marks</span>;  <span class="cm">// 'marks' is an identifier</span></pre>
+      <p>Rules: Must start with a letter or underscore(_), no special characters, no spaces, not a keyword.</p>
+
+      <h3 class="section-head">3. Constants</h3>
+      <p>Fixed values that cannot be changed during program execution.</p>
+      <pre><span class="num">10</span>       <span class="cm">// Integer constant</span>
+<span class="num">3.14</span>     <span class="cm">// Float constant</span>
+<span class="str">'A'</span>      <span class="cm">// Character constant</span>
+<span class="str">"Hello"</span>  <span class="cm">// String constant</span></pre>
+
+      <h3 class="section-head">4. Strings</h3>
+      <p>Sequence of characters enclosed in double quotes, terminated by a null character '\0'.</p>
+      <pre><span class="str">"Programming"</span>   <span class="cm">// String token</span></pre>
+
+      <h3 class="section-head">5. Operators</h3>
+      <p>Symbols that perform operations on operands.</p>
+      <pre>+   -   *   /   %    <span class="cm">// Arithmetic</span>
+==  !=  &lt;   &gt;        <span class="cm">// Relational</span>
+&&  ||  !            <span class="cm">// Logical</span></pre>
+
+      <h3 class="section-head">6. Special Symbols (Punctuators)</h3>
+      <p>Used for specific purposes in syntax.</p>
+      <pre>{ }  <span class="cm">// Block delimiters</span>
+( )  <span class="cm">// Function calls</span>
+[ ]  <span class="cm">// Array subscripts</span>
+;    <span class="cm">// Statement terminator</span>
+,    <span class="cm">// Separator</span></pre>
+
+      <div class="tip">Write all 6 types clearly with a heading for each and one example. This answer easily scores full 4 marks.</div>
+    </div>
+  </div>
+
+  <!-- Q11 -->
+  <div class="q-card" id="q11">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-num">Q.11</span>
+      <span class="q-title">Describe different Data Types in C with size and examples.</span>
+      <span class="marks-badge">4 Marks</span>
+      <span class="toggle-icon">▼</span>
+    </div>
+    <div class="q-body">
+      <p>A <strong>Data Type</strong> in C specifies the type of data a variable can hold — its size and the kind of values it can store.</p>
+
+      <h3 class="section-head">Primary (Basic) Data Types</h3>
+      <div class="tbl-wrap">
+        <table>
+          <tr><th>Data Type</th><th>Size</th><th>Range</th><th>Example</th></tr>
+          <tr><td><strong>int</strong></td><td>2 or 4 bytes</td><td>-32768 to 32767 (2B)</td><td><code>int age = 20;</code></td></tr>
+          <tr><td><strong>float</strong></td><td>4 bytes</td><td>3.4e-38 to 3.4e+38</td><td><code>float pi = 3.14;</code></td></tr>
+          <tr><td><strong>double</strong></td><td>8 bytes</td><td>Higher precision float</td><td><code>double d = 3.14159;</code></td></tr>
+          <tr><td><strong>char</strong></td><td>1 byte</td><td>-128 to 127</td><td><code>char g = 'A';</code></td></tr>
+          <tr><td><strong>void</strong></td><td>0 bytes</td><td>No value</td><td>Used in functions</td></tr>
+        </table>
+      </div>
+
+      <h3 class="section-head">Derived Data Types</h3>
+      <p>Built from basic data types: <strong>Array</strong>, <strong>Pointer</strong>, <strong>Structure</strong>, <strong>Union</strong>, <strong>Function</strong>.</p>
+
+      <h3 class="section-head">Example Program</h3>
+      <pre><span class="kw">#include</span> <span class="str">&lt;stdio.h&gt;</span>
+<span class="ty">int</span> <span class="fn">main</span>() {
+    <span class="ty">int</span> age = <span class="num">20</span>;
+    <span class="ty">float</span> marks = <span class="num">95.5</span>;
+    <span class="ty">char</span> grade = <span class="str">'A'</span>;
+    printf(<span class="str">"Age: %d, Marks: %.1f, Grade: %c\n"</span>, age, marks, grade);
+    <span class="kw">return</span> <span class="num">0</span>;
+}</pre>
+    </div>
+  </div>
+
+  <!-- Q12 -->
+  <div class="q-card" id="q12">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-num">Q.12</span>
+      <span class="q-title">Discuss Arithmetic Operators in C with examples.</span>
+      <span class="marks-badge">4 Marks</span>
+      <span class="toggle-icon">▼</span>
+    </div>
+    <div class="q-body">
+      <p>Arithmetic operators are used to perform basic mathematical operations.</p>
+
+      <div class="tbl-wrap">
+        <table>
+          <tr><th>Operator</th><th>Name</th><th>Example (a=10, b=3)</th><th>Result</th></tr>
+          <tr><td><strong>+</strong></td><td>Addition</td><td>a + b</td><td>13</td></tr>
+          <tr><td><strong>-</strong></td><td>Subtraction</td><td>a - b</td><td>7</td></tr>
+          <tr><td><strong>*</strong></td><td>Multiplication</td><td>a * b</td><td>30</td></tr>
+          <tr><td><strong>/</strong></td><td>Division</td><td>a / b</td><td>3 (integer division)</td></tr>
+          <tr><td><strong>%</strong></td><td>Modulus (Remainder)</td><td>a % b</td><td>1</td></tr>
+          <tr><td><strong>++</strong></td><td>Increment</td><td>a++</td><td>11</td></tr>
+          <tr><td><strong>--</strong></td><td>Decrement</td><td>a--</td><td>9</td></tr>
+        </table>
+      </div>
+
+      <h3 class="section-head">Example Program</h3>
+      <pre><span class="kw">#include</span> <span class="str">&lt;stdio.h&gt;</span>
+<span class="ty">int</span> <span class="fn">main</span>() {
+    <span class="ty">int</span> a = <span class="num">10</span>, b = <span class="num">3</span>;
+    printf(<span class="str">"Addition: %d\n"</span>, a+b);      <span class="cm">// 13</span>
+    printf(<span class="str">"Subtraction: %d\n"</span>, a-b);   <span class="cm">// 7</span>
+    printf(<span class="str">"Multiplication: %d\n"</span>, a*b); <span class="cm">// 30</span>
+    printf(<span class="str">"Division: %d\n"</span>, a/b);      <span class="cm">// 3</span>
+    printf(<span class="str">"Modulus: %d\n"</span>, a%b);       <span class="cm">// 1</span>
+    <span class="kw">return</span> <span class="num">0</span>;
+}</pre>
+      <p><strong>Note:</strong> In integer division, 10/3 = 3 (decimal part is truncated). Modulus (%) only works with integers.</p>
+    </div>
+  </div>
+
+  <!-- Q13 – ⭐ IMPORTANT -->
+  <div class="q-card" id="q13">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-num">Q.13 ⭐</span>
+      <span class="q-title">Explain Relational and Logical Operators with examples. (ASKED IN PREV. PAPER – 6 Marks)</span>
+      <span class="marks-badge six">6 Marks</span>
+      <span class="toggle-icon">▼</span>
+    </div>
+    <div class="q-body">
+      <div class="ans-intro">This was directly asked in the previous question paper (Q2a – 6 marks). Write the full answer with a program.</div>
+
+      <h3 class="section-head">Relational Operators</h3>
+      <p>Relational operators compare two values and return either <em>1 (true)</em> or <em>0 (false)</em>.</p>
+
+      <div class="tbl-wrap">
+        <table>
+          <tr><th>Operator</th><th>Meaning</th><th>Example (a=5, b=3)</th><th>Result</th></tr>
+          <tr><td><strong>==</strong></td><td>Equal to</td><td>a == b</td><td>0 (false)</td></tr>
+          <tr><td><strong>!=</strong></td><td>Not equal to</td><td>a != b</td><td>1 (true)</td></tr>
+          <tr><td><strong>&gt;</strong></td><td>Greater than</td><td>a &gt; b</td><td>1 (true)</td></tr>
+          <tr><td><strong>&lt;</strong></td><td>Less than</td><td>a &lt; b</td><td>0 (false)</td></tr>
+          <tr><td><strong>&gt;=</strong></td><td>Greater than or equal to</td><td>a &gt;= b</td><td>1 (true)</td></tr>
+          <tr><td><strong>&lt;=</strong></td><td>Less than or equal to</td><td>a &lt;= b</td><td>0 (false)</td></tr>
+        </table>
+      </div>
+
+      <h3 class="section-head">Logical Operators</h3>
+      <p>Logical operators combine multiple conditions. They return 1 (true) or 0 (false).</p>
+
+      <div class="tbl-wrap">
+        <table>
+          <tr><th>Operator</th><th>Name</th><th>Meaning</th><th>Example</th><th>Result</th></tr>
+          <tr><td><strong>&&</strong></td><td>Logical AND</td><td>Both conditions must be true</td><td>(5&gt;3) && (4&gt;2)</td><td>1 (true)</td></tr>
+          <tr><td><strong>||</strong></td><td>Logical OR</td><td>At least one condition must be true</td><td>(5&gt;3) || (4&lt;2)</td><td>1 (true)</td></tr>
+          <tr><td><strong>!</strong></td><td>Logical NOT</td><td>Reverses the condition</td><td>!(5&gt;3)</td><td>0 (false)</td></tr>
+        </table>
+      </div>
+
+      <h3 class="section-head">Truth Table for AND (&&)</h3>
+      <div class="tbl-wrap">
+        <table>
+          <tr><th>A</th><th>B</th><th>A && B</th></tr>
+          <tr><td>0</td><td>0</td><td>0</td></tr>
+          <tr><td>0</td><td>1</td><td>0</td></tr>
+          <tr><td>1</td><td>0</td><td>0</td></tr>
+          <tr><td>1</td><td>1</td><td>1</td></tr>
+        </table>
+      </div>
+
+      <h3 class="section-head">Example Program</h3>
+      <pre><span class="kw">#include</span> <span class="str">&lt;stdio.h&gt;</span>
+<span class="ty">int</span> <span class="fn">main</span>() {
+    <span class="ty">int</span> a = <span class="num">5</span>, b = <span class="num">3</span>, c = <span class="num">7</span>;
+
+    <span class="cm">// Relational operators</span>
+    printf(<span class="str">"a == b : %d\n"</span>, a == b);   <span class="cm">// 0</span>
+    printf(<span class="str">"a > b  : %d\n"</span>, a &gt; b);    <span class="cm">// 1</span>
+
+    <span class="cm">// Logical operators</span>
+    printf(<span class="str">"(a>b) && (c>a) : %d\n"</span>, (a&gt;b) && (c&gt;a)); <span class="cm">// 1</span>
+    printf(<span class="str">"(a<b) || (c>a) : %d\n"</span>, (a&lt;b) || (c&gt;a)); <span class="cm">// 1</span>
+    printf(<span class="str">"!(a > b) : %d\n"</span>, !(a &gt; b));              <span class="cm">// 0</span>
+
+    <span class="kw">return</span> <span class="num">0</span>;
+}
+
+<span class="cm">// Output:
+// a == b : 0
+// a > b  : 1
+// (a>b) && (c>a) : 1
+// (a<b) || (c>a) : 1
+// !(a > b) : 0</span></pre>
+
+      <div class="tip">Write definition, table, truth table, and a program. Truth table alone ensures 1–2 extra marks for logical operators.</div>
+    </div>
+  </div>
+
+  <!-- Q14 -->
+  <div class="q-card" id="q14">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-num">Q.14</span>
+      <span class="q-title">Describe Bitwise Operators in C with examples.</span>
+      <span class="marks-badge">4 Marks</span>
+      <span class="toggle-icon">▼</span>
+    </div>
+    <div class="q-body">
+      <p>Bitwise operators work at the <strong>bit level</strong> — they perform operations on the binary representation of integers.</p>
+
+      <div class="tbl-wrap">
+        <table>
+          <tr><th>Operator</th><th>Name</th><th>Operation</th></tr>
+          <tr><td><strong>&</strong></td><td>Bitwise AND</td><td>1 if both bits are 1</td></tr>
+          <tr><td><strong>|</strong></td><td>Bitwise OR</td><td>1 if either bit is 1</td></tr>
+          <tr><td><strong>^</strong></td><td>Bitwise XOR</td><td>1 if bits are different</td></tr>
+          <tr><td><strong>~</strong></td><td>Bitwise NOT</td><td>Inverts all bits (complement)</td></tr>
+          <tr><td><strong>&lt;&lt;</strong></td><td>Left Shift</td><td>Shifts bits left (×2)</td></tr>
+          <tr><td><strong>&gt;&gt;</strong></td><td>Right Shift</td><td>Shifts bits right (÷2)</td></tr>
+        </table>
+      </div>
+
+      <h3 class="section-head">Example (a=12, b=10)</h3>
+      <div class="diagram">  a = 12 → binary: 1100
+  b = 10 → binary: 1010
+
+  a & b  = 1100 & 1010 = 1000 = 8
+  a | b  = 1100 | 1010 = 1110 = 14
+  a ^ b  = 1100 ^ 1010 = 0110 = 6
+  ~a     = ~1100 = ...0011 = -13 (2's complement)
+  a << 1 = 1100 << 1 = 11000 = 24
+  a >> 1 = 1100 >> 1 = 0110  = 6</div>
+
+      <pre><span class="kw">#include</span> <span class="str">&lt;stdio.h&gt;</span>
+<span class="ty">int</span> <span class="fn">main</span>() {
+    <span class="ty">int</span> a = <span class="num">12</span>, b = <span class="num">10</span>;
+    printf(<span class="str">"AND: %d\n"</span>, a & b);   <span class="cm">// 8</span>
+    printf(<span class="str">"OR: %d\n"</span>, a | b);    <span class="cm">// 14</span>
+    printf(<span class="str">"XOR: %d\n"</span>, a ^ b);   <span class="cm">// 6</span>
+    printf(<span class="str">"NOT: %d\n"</span>, ~a);      <span class="cm">// -13</span>
+    <span class="kw">return</span> <span class="num">0</span>;
+}</pre>
+    </div>
+  </div>
+
+  <!-- Q15 -->
+  <div class="q-card" id="q15">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-num">Q.15 ⭐</span>
+      <span class="q-title">Explain Conditional (Ternary) Operator with examples. (ASKED IN PREV. PAPER – 6 Marks)</span>
+      <span class="marks-badge six">6 Marks</span>
+      <span class="toggle-icon">▼</span>
+    </div>
+    <div class="q-body">
+      <div class="ans-intro">This was asked in Q2b of previous paper (6 marks). Write definition, syntax, explanation, and 2 programs.</div>
+
+      <p>The <strong>Conditional Operator</strong> (also called Ternary Operator) is the only operator in C that takes <em>three operands</em>. It is used as a shorthand for if-else statements.</p>
+
+      <h3 class="section-head">Syntax</h3>
+      <pre>variable = (condition) ? expression_if_true : expression_if_false;</pre>
+
+      <h3 class="section-head">How it Works</h3>
+      <ul>
+        <li>The <strong>condition</strong> is evaluated first.</li>
+        <li>If condition is <strong>true (non-zero)</strong> → the value before <code>:</code> is returned.</li>
+        <li>If condition is <strong>false (zero)</strong> → the value after <code>:</code> is returned.</li>
+      </ul>
+
+      <h3 class="section-head">Example 1: Find Maximum of Two Numbers</h3>
+      <pre><span class="kw">#include</span> <span class="str">&lt;stdio.h&gt;</span>
+<span class="ty">int</span> <span class="fn">main</span>() {
+    <span class="ty">int</span> a = <span class="num">10</span>, b = <span class="num">20</span>, max;
+    max = (a &gt; b) ? a : b;
+    printf(<span class="str">"Maximum = %d\n"</span>, max);  <span class="cm">// Output: Maximum = 20</span>
+    <span class="kw">return</span> <span class="num">0</span>;
+}</pre>
+
+      <h3 class="section-head">Example 2: Check Even or Odd</h3>
+      <pre><span class="kw">#include</span> <span class="str">&lt;stdio.h&gt;</span>
+<span class="ty">int</span> <span class="fn">main</span>() {
+    <span class="ty">int</span> n = <span class="num">7</span>;
+    printf(<span class="str">"%d is %s\n"</span>, n, (n%<span class="num">2</span>==<span class="num">0</span>) ? <span class="str">"Even"</span> : <span class="str">"Odd"</span>);
+    <span class="cm">// Output: 7 is Odd</span>
+    <span class="kw">return</span> <span class="num">0</span>;
+}</pre>
+
+      <h3 class="section-head">Equivalent if-else</h3>
+      <pre><span class="cm">// This ternary: max = (a > b) ? a : b;</span>
+<span class="cm">// Is same as:</span>
+<span class="kw">if</span> (a &gt; b)
+    max = a;
+<span class="kw">else</span>
+    max = b;</pre>
+
+      <div class="tip">Write: definition → syntax → working → 2 programs → comparison with if-else. This structure guarantees full 6 marks.</div>
+    </div>
+  </div>
+
+  <!-- Q16 -->
+  <div class="q-card" id="q16">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-num">Q.16</span>
+      <span class="q-title">Explain Operator Precedence and Order of Evaluation in C.</span>
+      <span class="marks-badge">4 Marks</span>
+      <span class="toggle-icon">▼</span>
+    </div>
+    <div class="q-body">
+      <p><strong>Operator Precedence</strong> determines which operator is evaluated first in an expression that has multiple operators. Operators with <em>higher precedence</em> are evaluated before those with lower precedence.</p>
+
+      <p><strong>Associativity</strong> determines the direction of evaluation when operators have the same precedence (Left-to-Right or Right-to-Left).</p>
+
+      <h3 class="section-head">Precedence Table (High to Low)</h3>
+      <div class="tbl-wrap">
+        <table>
+          <tr><th>Priority</th><th>Operators</th><th>Associativity</th></tr>
+          <tr><td>1 (Highest)</td><td>() [] → .</td><td>Left to Right</td></tr>
+          <tr><td>2</td><td>++ -- ~ ! (unary)</td><td>Right to Left</td></tr>
+          <tr><td>3</td><td>* / %</td><td>Left to Right</td></tr>
+          <tr><td>4</td><td>+ -</td><td>Left to Right</td></tr>
+          <tr><td>5</td><td>&lt; &lt;= &gt; &gt;=</td><td>Left to Right</td></tr>
+          <tr><td>6</td><td>== !=</td><td>Left to Right</td></tr>
+          <tr><td>7</td><td>&amp;&amp;</td><td>Left to Right</td></tr>
+          <tr><td>8</td><td>||</td><td>Left to Right</td></tr>
+          <tr><td>9</td><td>? :</td><td>Right to Left</td></tr>
+          <tr><td>10 (Lowest)</td><td>= += -= *= /=</td><td>Right to Left</td></tr>
+        </table>
+      </div>
+
+      <h3 class="section-head">Example</h3>
+      <pre><span class="ty">int</span> result = <span class="num">2</span> + <span class="num">3</span> * <span class="num">4</span> - <span class="num">1</span>;
+<span class="cm">// Step 1: 3 * 4 = 12  (multiplication first - higher precedence)</span>
+<span class="cm">// Step 2: 2 + 12 = 14</span>
+<span class="cm">// Step 3: 14 - 1 = 13</span>
+<span class="cm">// result = 13</span></pre>
+
+      <div class="tip">Remember the mnemonic: <strong>BODMAS</strong> (Brackets, Orders, Division, Multiplication, Addition, Subtraction) works similarly in C!</div>
+    </div>
+  </div>
+
+  <!-- Q17 -->
+  <div class="q-card" id="q17">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-num">Q.17</span>
+      <span class="q-title">Explain Type Conversion in C (Implicit and Explicit).</span>
+      <span class="marks-badge">4 Marks</span>
+      <span class="toggle-icon">▼</span>
+    </div>
+    <div class="q-body">
+      <p><strong>Type Conversion</strong> is the process of converting a value from one data type to another. There are two types:</p>
+
+      <h3 class="section-head">1. Implicit Type Conversion (Type Promotion / Automatic)</h3>
+      <p>Done <em>automatically by the compiler</em> when different data types are used in an expression. Lower type is automatically converted to higher type.</p>
+      <pre><span class="ty">int</span> a = <span class="num">5</span>;
+<span class="ty">float</span> b = <span class="num">2.5</span>;
+<span class="ty">float</span> result = a + b;  <span class="cm">// 'a' (int) is auto-converted to float</span>
+<span class="cm">// result = 7.5</span></pre>
+      <p>Hierarchy: <code>char → int → long → float → double</code></p>
+
+      <h3 class="section-head">2. Explicit Type Conversion (Type Casting / Manual)</h3>
+      <p>Done <em>manually by the programmer</em> using a cast operator to force conversion.</p>
+      <pre><span class="cm">// Syntax: (data_type) expression</span>
+
+<span class="ty">int</span> a = <span class="num">7</span>, b = <span class="num">2</span>;
+<span class="ty">float</span> result = (<span class="ty">float</span>) a / b;
+<span class="cm">// Without cast: 7/2 = 3 (integer division)</span>
+<span class="cm">// With cast: (float)7/2 = 3.5 (float division)</span>
+printf(<span class="str">"Result = %.1f\n"</span>, result);  <span class="cm">// Output: 3.5</span></pre>
+
+      <div class="tbl-wrap">
+        <table>
+          <tr><th>Feature</th><th>Implicit</th><th>Explicit</th></tr>
+          <tr><td>Done by</td><td>Compiler automatically</td><td>Programmer manually</td></tr>
+          <tr><td>Keyword</td><td>None</td><td>(data_type)</td></tr>
+          <tr><td>Data loss risk</td><td>No (widens type)</td><td>Possible (narrowing)</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q18 -->
+  <div class="q-card" id="q18">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-num">Q.18</span>
+      <span class="q-title">Explain Assignment Operators and Expressions in C.</span>
+      <span class="marks-badge">4 Marks</span>
+      <span class="toggle-icon">▼</span>
+    </div>
+    <div class="q-body">
+      <p>An <strong>Assignment Operator</strong> is used to store a value in a variable. The basic assignment operator in C is <code>=</code>.</p>
+
+      <h3 class="section-head">Simple Assignment</h3>
+      <pre><span class="ty">int</span> x = <span class="num">10</span>;   <span class="cm">// assigns 10 to x</span></pre>
+
+      <h3 class="section-head">Compound Assignment Operators</h3>
+      <p>These combine arithmetic with assignment for shorter syntax:</p>
+      <div class="tbl-wrap">
+        <table>
+          <tr><th>Operator</th><th>Example</th><th>Equivalent To</th><th>Result (a=10)</th></tr>
+          <tr><td><strong>+=</strong></td><td>a += 5</td><td>a = a + 5</td><td>15</td></tr>
+          <tr><td><strong>-=</strong></td><td>a -= 3</td><td>a = a - 3</td><td>7</td></tr>
+          <tr><td><strong>*=</strong></td><td>a *= 2</td><td>a = a * 2</td><td>20</td></tr>
+          <tr><td><strong>/=</strong></td><td>a /= 5</td><td>a = a / 5</td><td>2</td></tr>
+          <tr><td><strong>%=</strong></td><td>a %= 3</td><td>a = a % 3</td><td>1</td></tr>
+        </table>
+      </div>
+
+      <h3 class="section-head">Example Program</h3>
+      <pre><span class="kw">#include</span> <span class="str">&lt;stdio.h&gt;</span>
+<span class="ty">int</span> <span class="fn">main</span>() {
+    <span class="ty">int</span> a = <span class="num">10</span>;
+    a += <span class="num">5</span>;   printf(<span class="str">"a += 5 : %d\n"</span>, a);   <span class="cm">// 15</span>
+    a -= <span class="num">3</span>;   printf(<span class="str">"a -= 3 : %d\n"</span>, a);   <span class="cm">// 12</span>
+    a *= <span class="num">2</span>;   printf(<span class="str">"a *= 2 : %d\n"</span>, a);   <span class="cm">// 24</span>
+    a /= <span class="num">4</span>;   printf(<span class="str">"a /= 4 : %d\n"</span>, a);   <span class="cm">// 6</span>
+    a %= <span class="num">4</span>;   printf(<span class="str">"a %%= 4 : %d\n"</span>, a);  <span class="cm">// 2</span>
+    <span class="kw">return</span> <span class="num">0</span>;
+}</pre>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  Programming for Problem Solving · Unit I & II · Mid-Sem Exam 2025–26 · GCoE Kolhapur<br>
+  Good luck on your exam! 🎯
+</footer>
+
+<script>
+  function toggle(header) {
+    const card = header.parentElement;
+    card.classList.toggle('open');
+  }
+  function openAll() {
+    document.querySelectorAll('.q-card').forEach(c => c.classList.add('open'));
+  }
+  function closeAll() {
+    document.querySelectorAll('.q-card').forEach(c => c.classList.remove('open'));
+  }
+  // Open starred cards by default
+  document.querySelectorAll('.q-card').forEach(c => {
+    if (c.querySelector('.q-num').textContent.includes('⭐')) {
+      c.classList.add('open');
+    }
+  });
+</script>
+</body>
+</html>
